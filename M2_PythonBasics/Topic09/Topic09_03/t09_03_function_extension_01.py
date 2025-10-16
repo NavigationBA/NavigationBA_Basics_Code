@@ -1,15 +1,21 @@
-print("指定参数的类型")
+def calculate(a, b):
 
-# 定义乘积函数，添加类型注解
-def multiply(a: (int | float), b: (int | float)) -> (int | float):
-    return a * b
+    def add(x, y):
+        sum_result = x + y
+        return sum_result
 
-# 调用函数，计算两个整数的乘积
-print(multiply(3, 5))
+    def subtract(x, y):
+        diff_result = x - y
+        return diff_result
 
-# 定义重复字符串函数，添加类型注解
-def repeat_string(s: str, n: int) -> str:
-    return s * n
+    sum_result = add(a, b)
+    diff_result = subtract(a, b)
 
-# 调用函数，重复字符串
-print(repeat_string("*", 10))
+    return sum_result, diff_result
+
+a = 10
+b = 5
+result = calculate(a, b)
+print(f"{a}与{b}的和与差分别是:", result)
+
+# print(add(3, 4))  # 这会报错，因为 add 函数是局部函数

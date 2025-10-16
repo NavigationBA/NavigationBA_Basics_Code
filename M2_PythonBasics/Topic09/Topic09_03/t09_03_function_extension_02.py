@@ -1,8 +1,14 @@
-print("指定参数类型并不会限制传入的参数类型")
+def outer_function_v1():
 
-# 定义乘积函数，添加类型注解
-def multiply(a: (int | float), b: (int | float)) -> (int | float):
-    return a * b
+    outer_var = 10  # 外层函数的局部变量
+    print("外层函数变量原始值:", outer_var)
 
-# 调用函数，传入错误类型的参数
-print(multiply("*", 5))
+    def inner_function_v1():
+        nonlocal outer_var  # 声明 outer_var 是外层函数的变量
+        outer_var = 20  # 修改外层函数的变量
+        print("内层函数访问并修改的外层变量:", outer_var)
+
+    inner_function_v1()
+    print("外层函数再次访问外层变量:", outer_var)
+
+outer_function_v1()
